@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using BepInEx;
+using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +17,12 @@ namespace InfiniteSprayCans.Patches
         [HarmonyPostfix]
         static void infiniteSprayCansPatch(ref float ___sprayCanTank, ref float ___sprayCanShakeMeter)
         {
-            ___sprayCanTank = 1f;
-            ___sprayCanShakeMeter = 1f;
+            if (InfiniteSprayCans.Instance.isInfiniteTankEnabledEntry.Value) { 
+                ___sprayCanTank = 1f;
+            }
+            if (InfiniteSprayCans.Instance.isNoShakeEnabledEntry.Value) { 
+                ___sprayCanShakeMeter = 1f;
+            }
         }
     }
 }
