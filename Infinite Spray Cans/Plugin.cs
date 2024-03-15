@@ -18,14 +18,14 @@ namespace InfiniteSprayCans
     public class InfiniteSprayCans : BaseUnityPlugin
     {
         private const string modGUID = "Jacky.InfiniteSprayCans";
-        private const string modName = "Infinite Spray Cans";
-        private const string modVersion = "1.0.0";
+        private const string modName = "InfiniteSprayCans";
+        private const string modVersion = "1.0.2";
 
         private readonly Harmony harmony = new Harmony(modGUID);
 
         public static InfiniteSprayCans Instance;
 
-        internal ManualLogSource mls;
+        internal ManualLogSource logger;
 
         public ConfigEntry<bool> isInfiniteTankEnabledEntry;
         public ConfigEntry<bool> isNoShakeEnabledEntry;
@@ -37,9 +37,7 @@ namespace InfiniteSprayCans
                 Instance = this;
             }
 
-            mls = BepInEx.Logging.Logger.CreateLogSource(modGUID);
-
-            mls.LogInfo("The mod has awaken");
+            logger.LogInfo("InfiniteSprayCas mod has awaken");
 
             isInfiniteTankEnabledEntry = Config.Bind("Infinite Spray Cans Config", "Enable Infinite Spray Can Tank", true, "This enables the spray can to be used infinitely!");
             isNoShakeEnabledEntry = Config.Bind("Infinite Spray Cans Config", "Enable No Shake Spray Can", true, "This enables the spray can to be used without needing to shake it!");
